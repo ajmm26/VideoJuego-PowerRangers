@@ -10,4 +10,8 @@
     <h1>Juego Rangers</h1>
 </body>
 <script src="./public/js/principal.js"></script>
+<script src="./public/js/dimensions.js"></script>
+<script src="./public/js/rectangular.js"></script>
+<script src="./public/js/runGame.js"></script>
+
 </html>

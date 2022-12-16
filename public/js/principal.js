@@ -3,13 +3,13 @@ const principalLoop={
     ultimoRegistro:0,
     aps:0,
     fps:0,
-    iterar:(Tempregistro)=>{
+    iterar:(tempRegistro)=>{
        principalLoop.idEjecicion=window.requestAnimationFrame(principalLoop.iterar);
-       principalLoop.refresh(Tempregistro);
+       principalLoop.refresh(tempRegistro);
        principalLoop.draw();
-       if(registro-principalLoop.ultimoRegistro>999){
-        principalLoop.ultimoRegistro=Tempregistro;
-        console.log("Aps: " + principalLoop.aps) +" | Fps: " + principalLoop.fps;
+       if(tempRegistro-principalLoop.ultimoRegistro>999){
+        principalLoop.ultimoRegistro=tempRegistro;
+        console.log("Aps: " + principalLoop.aps +" | Fps: " + principalLoop.fps);
         principalLoop.aps=0;
         principalLoop.fps=0;
 
@@ -18,11 +18,11 @@ const principalLoop={
     pause:()=>{
 
     },
-    refresh:(Tempregistro)=>{
+    refresh:(tempRegistro)=>{
         principalLoop.aps++;
 
     },
-    draw:(Tempregistro)=>{
+    draw:(tempRegistro)=>{
         principalLoop.fps++;
 
     }
