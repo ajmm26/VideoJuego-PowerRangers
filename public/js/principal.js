@@ -19,6 +19,7 @@ const principalLoop={
 
     },
     refresh:(tempRegistro)=>{
+        keyboard.restart();
         principalLoop.aps++;
 
     },

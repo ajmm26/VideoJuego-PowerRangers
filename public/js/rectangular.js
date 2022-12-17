@@ -15,11 +15,11 @@ function Rectangulo (x,y,width,height) {
 
 Rectangulo.prototype.insertarDOM=function(){
      
-    var div = document.createElement('div')
+    const div = document.createElement('div')
     div.setAttribute("id",`${this.id}`)
     juego.appendChild(div)
     console.log(div)
-    var color = '#'+ Math.floor(Math.random()*16777215).toString(16);
+    const color = '#'+ Math.floor(Math.random()*16777215).toString(16);
     div.style.position="absolute";
     div.style.left=this.x+"px";
     div.style.top=this.y+"px";

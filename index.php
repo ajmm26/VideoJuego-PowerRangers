@@ -7,9 +7,9 @@
     <title>VideoGame</title>
 </head>
 <body>
-  
     <div id="juego"></div>
 </body>
+<script src="./public/js/keyboard.js"></script>
 <script src="./public/js/rectangular.js"></script>
 <script src="./public/js/principal.js"></script>
 <script src="./public/js/dimensions.js"></script>

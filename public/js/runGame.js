@@ -1,11 +1,21 @@
-const init={
+const begin={
     gameStar:()=>{
         console.log("Juego iniciado")
+        keyboard.start();
         dimensions.init();
-        var r= new Rectangulo(0,0,120,120)
+        begin.reloadTiles();
         principalLoop.iterar();
 
-}
-}
+},
+reloadTiles:()=>{
+    document.getElementById('juego').innerHTML="";
+    
+            var R = new Rectangulo(dimensions.obtainHorizontalSizesTiles,dimensions.obtainVerticalSizesTiles,dimensions.sizeTiles,dimensions.sizeTiles)
+            
+        }
+     }
 
-init.gameStar();
+        
+       
+
+begin.gameStar();
