@@ -1,0 +1,49 @@
+#div-game{
+    width: 100%;
+   height: 400px;
+   display: flex;
+   justify-content: center;
+}
+
+#divInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+}
+
+.div-inputName{
+    display: flex;
+    align-items: center;
+
+}
+
+.submit-juego{
+    width: 30px;
+    height: 30px;
+    background-color: #ABA6A6;
+
+}
+
+.imgButton{
+    width: 100%;
+    height: 100%;
+     object-fit: contain;
+}
+
+.input-name{
+        text-transform: uppercase;
+    font-family: "Jersey 10", sans-serif;
+    width: 150px;
+    height: 20px;
+}
+
+#text-error-inputName {
+  position: absolute;
+  bottom: 35px; /* ajusta según dónde quieras mostrarlo */
+ color: red;
+  font-family: "Jersey 10", sans-serif;
+  pointer-events: none;
+  background-color: black;
+  z-index: 1000;
+}
