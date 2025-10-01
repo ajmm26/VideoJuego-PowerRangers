@@ -26,7 +26,7 @@
   <span style="font-family: 'Jersey 10'; visibility: hidden; position: absolute;">Cargando fuente...</span>
 
      <div id='div-game'>
-
+      
      </div>
     </body>
 </html>

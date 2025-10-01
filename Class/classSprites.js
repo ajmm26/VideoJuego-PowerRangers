@@ -4,6 +4,9 @@
  
  export  class Sprites{
 
+
+
+
 constructor(app){
 
     this.app = app;
@@ -26,8 +29,6 @@ async createSprite(url, rectX, rectY, width, height, posX, posY, scale = 1, name
     sprite.scale.set(scale);
     sprite.name = name;
 
-
-      this.app.stage.addChild(sprite);
     return sprite;
   }
 

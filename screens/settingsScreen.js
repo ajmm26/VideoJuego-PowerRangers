@@ -28,8 +28,8 @@ export async function settingsScreen(){
            scalebackground, // scale
             'backgroundStart' // name
         );
+        appContainer.app.stage.addChild(backGroundimageStart);
         appContainer.centerSprite(backGroundimageStart, 2, 2);
-
 
 
     const buttonMusic = await appContainer.createSprite(
@@ -51,7 +51,7 @@ export async function settingsScreen(){
         appContainer.app.stage.addChild(buttonMusicpaused);     
       })
      Helpers.changeBrightnessDinamic(buttonMusic,1,0.5);
-    
+    appContainer.app.stage.addChild(buttonMusic);
 
     const buttonMusicpaused = await appContainer.createSprite(
         '/CursoPHP/Img/miniBotones.png',
@@ -81,7 +81,6 @@ export async function settingsScreen(){
             appContainer.app.stage.addChild(buttonMusic);
         }
        
-
         
 
 
@@ -102,5 +101,5 @@ export async function settingsScreen(){
          })
         Helpers.changeBrightnessDinamic(buttonBack,1,0.5);
 
-
+      appContainer.app.stage.addChild(buttonBack);
 }

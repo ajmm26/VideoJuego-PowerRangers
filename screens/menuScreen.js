@@ -26,17 +26,21 @@ const iconMenu= await appContainer.createSprite(
             'backgroundStart' // name 
 )
 
-        let nosew = containerWidth/ iconMenu.texture.width;
-        let noseh = containerHeight/ iconMenu.texture.height;
-        const sc = Math.min(nosew, noseh); // mantener proporción sin recorte
-        iconMenu.scale.set(sc);
-        RulesScreen.oneScaleOptionsBackgroundInit(containerWidth,sc, iconMenu);
-        RulesScreen.positionBackgroundInit(appContainer, iconMenu);
-        
 
-          $(document).ready(()=>{
-              Helpers.changeBrightness(iconMenu, 2)
-          })
+let nosew = containerWidth/ iconMenu.texture.width;
+let noseh = containerHeight/ iconMenu.texture.height;
+const sc = Math.min(nosew, noseh); // mantener proporción sin recorte
+iconMenu.scale.set(sc);
+RulesScreen.oneScaleOptionsBackgroundInit(containerWidth,sc, iconMenu);
+RulesScreen.positionBackgroundInit(appContainer, iconMenu);
+
+
+$(document).ready(()=>{
+  Helpers.changeBrightness(iconMenu, 2)
+})
+
+appContainer.app.stage.addChild(iconMenu);
+
 
       let scaleButton=RulesScreen.scaleButtonsMenu(containerWidth);
          const buttonPlay = await appContainer.createSprite(
@@ -61,7 +65,7 @@ const iconMenu= await appContainer.createSprite(
           container.removeChild(app.view);
           await inputScreen()
          })
-
+        appContainer.app.stage.addChild(buttonPlay);
 
         const buttonSettings = await appContainer.createSprite(
           '/CursoPHP/Img/buttons-options.png',
@@ -82,7 +86,7 @@ const iconMenu= await appContainer.createSprite(
           await settingsScreen();
          })
          Helpers.changeBrightnessDinamic(buttonSettings,1,0.5);
-
+appContainer.app.stage.addChild(buttonSettings);
 
          const buttonExit = await appContainer.createSprite(
         '/CursoPHP/Img/buttons-options.png',
@@ -105,5 +109,5 @@ const iconMenu= await appContainer.createSprite(
      });
      Helpers.changeBrightnessDinamic(buttonExit,1,0.5);
 
-
+      appContainer.app.stage.addChild(buttonExit);
 }

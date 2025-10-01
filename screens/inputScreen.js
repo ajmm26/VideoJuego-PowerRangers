@@ -26,11 +26,14 @@ export async function inputScreen(){
     1,
     'center'
     )
+
+    appContainer.app.stage.addChild(imgBackground);
+
     /// Se calcula el scale
      let nosew = containerWidth / imgBackground.texture.width;
     let noseh = containerHeight / imgBackground.texture.height;
     let sc=null;
-    if(containerWidth <= 500){
+    if(containerWidth <= 600){
    sc= Math.max(nosew,noseh);
     }else{
       
@@ -56,6 +59,7 @@ export async function inputScreen(){
     
     );
     
+
     appContainer.makeButton(buttonBack,'pointerdown',async ()=>{
       if (divInput && container.contains(divInput)) {
     container.removeChild(divInput);
@@ -64,7 +68,7 @@ export async function inputScreen(){
       await  menuScreen()
     })
     Helpers.changeBrightnessDinamic(buttonBack,1,0.5);
-    
+    appContainer.app.stage.addChild(buttonBack);
 
     ///Texto de ingresar Nombre
     await document.fonts.ready;
@@ -106,34 +110,81 @@ export async function inputScreen(){
       /// se crea a zordon 
       const zordon= await appContainer.createSprite('/CursoPHP/Img/sheetComandCenter.png', 20,250,90,60,monitorX,monitorY,sc)
       //se crean las constantes para posicionar el messagebox
+
      const positionMessageBoxXY= positionMessageBox(containerWidth,imgBackground)
+     appContainer.app.stage.addChild(zordon);
       //// se hace la animacion de la aparicion de zordon
      animationSprite(appContainer,1,zordon);
      //se crea el intervalo que hace el funcionamiento de la maquina para escribir
      setTimeout(async ()=>{
        /// se crea la message box
-       const messageBox= await appContainer.createSprite('/CursoPHP/Img/message-box.png', 0,30,819,258,positionMessageBoxXY.X,positionMessageBoxXY.Y,1)
-      ////se calcula la escala de la messageBox
-       const messageBoxScales = messageBoxScaleXY(containerWidth,imgBackground);
-       messageBox.scale.set(messageBoxScales.X,messageBoxScales.Y)
-        const border = new PIXI.Graphics();
-       border.lineStyle(4, 0xff0000, 1); // grosor=4, color rojo, opacidad=1
-        border.drawRect(messageBox.x, messageBox.y, messageBox.width, messageBox.height);
-        appContainer.app.stage.addChild(border)
-       const fontTextZordonName=String(messageBox.width*0.1)+'px'
-        let kakakak= await text.createText('','Jersey 10', '#000000', fontTextZordonName)
-        console.log(kakakak.style.size)
-         const margenHorizontal = messageBox.width*0.11;
-         const margenVertical= messageBox.height * 0.4;
-          kakakak.x = margenHorizontal; // margen dentro del messageBox
-          kakakak.y = margenVertical;
-           kakakak.style.wordWrap = true;             // Activar salto de línea
-       kakakak.style.wordWrapWidth = messageBox.width      // Ancho máximo antes de saltar
-       kakakak.style.lineHeight=30
-       messageBox.addChild(kakakak);
-       const dialogo="[NOMBRE], has sido elegido para enfrentar las fuerzas del mal dirigidas por Lord Zedd y Rita Repulsa. Los Power Rangers están en otra misión y no pueden detener esta amenaza. Recibirás los poderes del Ranger que elijas para poder luchar. Ahora iremos al Centro de Control para que selecciones tus habilidades. El Destino del planeta está en tus manos."
-      const dialogoReplace = dialogo.replace('[NOMBRE]', nombre.toUpperCase())
-       maquinaDeEscribir(messageBox,dialogoReplace, kakakak);
+     const messageBox = await appContainer.createSprite('/CursoPHP/Img/message-box.png', 0, 30, 819, 258, positionMessageBoxXY.X, positionMessageBoxXY.Y, 1);
+const messageBoxScales = messageBoxScaleXY(containerWidth, imgBackground);
+messageBox.scale.set(messageBoxScales.X, messageBoxScales.Y);
+
+// Usa dimensiones NO escaladas para cálculos locales
+const unscaledWidth = messageBox.texture.width;  // 819
+const unscaledHeight = messageBox.texture.height;  // 258
+
+// Reduce el factor a 0.05 para fuente más pequeña y más líneas (ajusta si necesitas)
+const fontTextZordonName = (unscaledWidth * 0.07) + 'px';  // ~41px local, se escala proporcionalmente
+
+const txtZordon = await text.createText('', 'Jersey 10', '#000000', fontTextZordonName);
+
+// Márgenes locales (ajusta 0.11 si el gráfico de message-box.png tiene bordes visuales más gruesos)
+const margenHorizontal = unscaledWidth * 0.11;
+const margenVertical = unscaledHeight * 0.1;  // Reduce a 10% para más espacio vertical
+appContainer.app.stage.addChild(messageBox);
+
+txtZordon.x = margenHorizontal;
+txtZordon.y = margenVertical;
+
+txtZordon.style.wordWrap = true;
+txtZordon.style.wordWrapWidth = unscaledWidth - (margenHorizontal * 2);  // Espacio efectivo para texto
+txtZordon.style.breakWords = true;  // Rompe palabras largas si es necesario
+txtZordon.style.align = 'left';  // Asegura alineación izquierda (por defecto, pero explícito)
+txtZordon.style.lineHeight = parseFloat(fontTextZordonName) * 0.6;  // Altura de línea proporcional
+
+messageBox.addChild(txtZordon);
+
+// Agrega una máscara para recortar el texto que desborde (horizontal o vertical)
+const mask = new PIXI.Graphics();
+mask.beginFill(0xffffff);  // Color no importa, es para máscara
+mask.drawRect(0, 0, unscaledWidth, unscaledHeight);  // Área local no escalada
+mask.endFill();
+messageBox.addChild(mask);
+messageBox.mask = mask;
+const skiptxt = await text.createText('Omitir', 'Jersey 10', '#7d7d7dff', (unscaledWidth * 0.05) + 'px');
+
+
+const scbuttonContinue = imgBackground.scale.x/15;
+const posXButtonContinue = imgBackground.x + (imgBackground.width*0.42);
+const posYButtonContinue = imgBackground.y + (imgBackground.height*0.6);
+const buttonContinue = await appContainer.createSprite('/CursoPHP/Img/buttonContinue.png', 220, 220, 1100, 550, posXButtonContinue, posYButtonContinue, scbuttonContinue);
+console.log(buttonContinue);
+skiptxt.x = unscaledWidth - (unscaledWidth * 0.15); // Posición local
+skiptxt.y = unscaledHeight - (unscaledHeight * 0.2); // Posición local
+skiptxt.style.textDecoration = 'underline';
+skiptxt.interactive = true;
+skiptxt.buttonMode = true;
+messageBox.addChild(skiptxt);
+skiptxt.on('pointerdown', () => {
+  if (messageBox.typingInterval) {
+
+    clearInterval(messageBox.typingInterval);
+    messageBox.typingInterval = null;
+    setTimeout(() => {
+     appContainer.app.stage.removeChild(messageBox);
+     appContainer.app.stage.addChild(buttonContinue);
+    },2000)
+  }
+  txtZordon.text = "[NOMBRE], has sido elegido para enfrentar las fuerzas del mal dirigidas por Lord Zedd y Rita Repulsa. Los Power Rangers están en otra misión y no pueden detener esta amenaza. Recibirás los poderes del Ranger que elijas para poder luchar. Ahora iremos al Centro de Control para que selecciones tus habilidades. El Destino del planeta está en tus manos.".replace('[NOMBRE]', nombre.toUpperCase());
+});
+
+
+const dialogo = "[NOMBRE], has sido elegido para enfrentar las fuerzas del mal dirigidas por Lord Zedd y Rita Repulsa. Los Power Rangers están en otra misión y no pueden detener esta amenaza. Recibirás los poderes del Ranger que elijas para poder luchar. Ahora iremos al Centro de Control para que selecciones tus habilidades. El Destino del planeta está en tus manos.";
+const dialogoReplace = dialogo.replace('[NOMBRE]', nombre.toUpperCase());
+  maquinaDeEscribir(messageBox, dialogoReplace, txtZordon,1);
            
      },1200);
     }
@@ -172,13 +223,19 @@ function animationSprite(appContainer, duration, sprite) {
 }
 
 
-function maquinaDeEscribir(sprite,dialogue,text){
+function maquinaDeEscribir(sprite=null,dialogue='',text='',corte=0){
 
 const arrayText = dialogue.split("");
 
 const cant = arrayText.length;
 
 let i=0;
+
+if(sprite.typingInterval){
+ clearInterval(sprite.typingInterval);
+ sprite.typingInterval = null;
+ return 0;
+}
 
 const interval = setInterval(()=>{
  if(i<cant){
@@ -187,8 +244,10 @@ const interval = setInterval(()=>{
     sprite.addChild(text);
  }else{
    clearInterval(interval);
+   return 0;
  }
 }, 100)
   
+sprite.typingInterval = interval
 
 }

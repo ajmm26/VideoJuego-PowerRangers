@@ -39,7 +39,7 @@ export async function initGame() {
         const sc = Math.min(nosew, noseh); // mantener proporción sin recorte
         backGroundimageStart.scale.set(sc);
         appContainer.centerSprite(backGroundimageStart, 2, 2);
-
+        appContainer.app.stage.addChild(backGroundimageStart);
         // Crear un sprite de botón
         const initButton = await appContainer.createSprite(
             '/CursoPHP/Img/basicButtons.png',
@@ -61,6 +61,7 @@ export async function initGame() {
             container.removeChild(app.view)
            await menuScreen();
     })
+        appContainer.app.stage.addChild(initButton);
     } catch (error) {
         console.error('Error initializing game:', error);
     }

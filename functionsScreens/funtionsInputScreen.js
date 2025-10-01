@@ -30,7 +30,7 @@ export function removeinput(input,div,res)
 export function buttonBackPosition(cWidth,imgW){
 
 
-let positions = cWidth <= 500
+let positions = cWidth <= 600
   ? { X: 0, Y: 0 }
   : { X: imgW.x, Y: imgW.y };
 
@@ -41,7 +41,7 @@ return positions;
 
 export function messageBoxScaleXY(cWidth,img){
 
-const scales = cWidth >= 500 
+const scales = cWidth >= 600 
 ?{X: (img.width * 1)/1000,
   Y: (img.height * 1.2)/1000}
 
@@ -55,7 +55,7 @@ const scales = cWidth >= 500
 export function positionMessageBox(cWidth,img){
 
   let pX=null;
- (cWidth >= 500) ?  pX= img.x + (img.width*0.1) :  pX= img.x + (img.width*0.22)
+ (cWidth >= 600) ?  pX= img.x + (img.width*0.1) :  pX= img.x + (img.width*0.22)
 
 const positions = {
   X: pX,
@@ -63,4 +63,9 @@ const positions = {
 }
 
 return positions
+}
+
+
+export function skipMessageZordon(cWidth){
+  
 }
