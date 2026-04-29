@@ -12,7 +12,11 @@ const styles= new PIXI.TextStyle({
 
     fontFamily:font,
     fill: color,
+<<<<<<< HEAD
     size: size
+=======
+    fontSize: size
+>>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
 
 })
 

@@ -25,8 +25,11 @@ const iconMenu= await appContainer.createSprite(
             1, // scale
             'backgroundStart' // name 
 )
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
 let nosew = containerWidth/ iconMenu.texture.width;
 let noseh = containerHeight/ iconMenu.texture.height;
 const sc = Math.min(nosew, noseh); // mantener proporción sin recorte

@@ -3,6 +3,11 @@ import * as Helpers from '../globalFunctions'
 import { menuScreen } from './menuScreen';
 import { Text } from '../Class/classText';
 import { erroMessageName,removeinput, buttonBackPosition, messageBoxScaleXY,positionMessageBox} from '../functionsScreens/funtionsInputScreen';
+<<<<<<< HEAD
+=======
+import { transporBase } from '../js/animation/transportationBase';
+import {Animation} from '../Class/classAnimation';
+>>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
 
 export async function inputScreen(){
   try {
@@ -11,9 +16,15 @@ export async function inputScreen(){
     const appContainer = new Sprites(app)
     const containerWidth = appContainer.app.screen.width 
     const containerHeight = appContainer.app.screen.height;
+<<<<<<< HEAD
     container.appendChild(app.view);
 
 
+=======
+    const AS = new Animation(app);
+    container.appendChild(app.view);
+
+>>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
     /// imagen de fondo
     const imgBackground= await appContainer.createSprite(
     '/CursoPHP/Img/sheetComandCenter.png',
@@ -28,6 +39,10 @@ export async function inputScreen(){
     )
 
     appContainer.app.stage.addChild(imgBackground);
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
 
     /// Se calcula el scale
      let nosew = containerWidth / imgBackground.texture.width;
@@ -114,7 +129,11 @@ export async function inputScreen(){
      const positionMessageBoxXY= positionMessageBox(containerWidth,imgBackground)
      appContainer.app.stage.addChild(zordon);
       //// se hace la animacion de la aparicion de zordon
+<<<<<<< HEAD
      animationSprite(appContainer,1,zordon);
+=======
+     AS.animationSprite(appContainer,1,zordon,1);
+>>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
      //se crea el intervalo que hace el funcionamiento de la maquina para escribir
      setTimeout(async ()=>{
        /// se crea la message box
@@ -127,7 +146,11 @@ const unscaledWidth = messageBox.texture.width;  // 819
 const unscaledHeight = messageBox.texture.height;  // 258
 
 // Reduce el factor a 0.05 para fuente más pequeña y más líneas (ajusta si necesitas)
+<<<<<<< HEAD
 const fontTextZordonName = (unscaledWidth * 0.07) + 'px';  // ~41px local, se escala proporcionalmente
+=======
+const fontTextZordonName = (unscaledWidth * 0.04) + 'px';  // ~41px local, se escala proporcionalmente
+>>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
 
 const txtZordon = await text.createText('', 'Jersey 10', '#000000', fontTextZordonName);
 
@@ -143,7 +166,11 @@ txtZordon.style.wordWrap = true;
 txtZordon.style.wordWrapWidth = unscaledWidth - (margenHorizontal * 2);  // Espacio efectivo para texto
 txtZordon.style.breakWords = true;  // Rompe palabras largas si es necesario
 txtZordon.style.align = 'left';  // Asegura alineación izquierda (por defecto, pero explícito)
+<<<<<<< HEAD
 txtZordon.style.lineHeight = parseFloat(fontTextZordonName) * 0.6;  // Altura de línea proporcional
+=======
+txtZordon.style.lineHeight = parseFloat(fontTextZordonName) * 0.8;  // Altura de línea proporcional
+>>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
 
 messageBox.addChild(txtZordon);
 
@@ -154,7 +181,11 @@ mask.drawRect(0, 0, unscaledWidth, unscaledHeight);  // Área local no escalada
 mask.endFill();
 messageBox.addChild(mask);
 messageBox.mask = mask;
+<<<<<<< HEAD
 const skiptxt = await text.createText('Omitir', 'Jersey 10', '#7d7d7dff', (unscaledWidth * 0.05) + 'px');
+=======
+const skiptxt = await text.createText('Omitir', 'Jersey 10', '#7d7d7dff', (unscaledWidth * 0.04) + 'px');
+>>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
 
 
 const scbuttonContinue = imgBackground.scale.x/15;
@@ -167,15 +198,54 @@ skiptxt.y = unscaledHeight - (unscaledHeight * 0.2); // Posición local
 skiptxt.style.textDecoration = 'underline';
 skiptxt.interactive = true;
 skiptxt.buttonMode = true;
+<<<<<<< HEAD
 messageBox.addChild(skiptxt);
+=======
+appContainer.makeButton(buttonContinue,'pointerdown',()=>{
+          AS.animationSprite(appContainer,1.5,imgBackground,2);
+          appContainer.app.stage.removeChild(zordon);
+          appContainer.app.stage.removeChild(buttonBack);
+          appContainer.app.stage.removeChild(buttonContinue);
+          setTimeout(  async ()=>{
+            container.removeChild(app.view);
+            await transporBase();
+    
+        },1500 )
+        })
+messageBox.addChild(skiptxt);
+const txtContinue= await text.createText('Continuar', 'Jersey 10', '#ffffff', (unscaledWidth * 0.27) + 'px');
+     const unscaledWidthButton = buttonContinue.texture.width;
+      const unscaledHeightButton = buttonContinue.texture.height;
+     const maskButton = new PIXI.Graphics();
+     maskButton.beginFill(0xffffff);
+     maskButton.drawRect(0, 0, unscaledWidthButton, unscaledHeightButton);
+      maskButton.endFill();
+      buttonContinue.mask = maskButton;
+      buttonContinue.addChild(maskButton);
+     txtContinue.x=unscaledWidthButton/2 - txtContinue.width/2.1;
+     txtContinue.y=unscaledHeightButton/2 - txtContinue.height/1.5;
+     buttonContinue.interactive = true;
+     buttonContinue.buttonMode = true;
+     Helpers.changeBrightnessDinamic(buttonContinue, 1, 0.5);
+
+
+
+>>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
 skiptxt.on('pointerdown', () => {
   if (messageBox.typingInterval) {
 
     clearInterval(messageBox.typingInterval);
     messageBox.typingInterval = null;
+<<<<<<< HEAD
     setTimeout(() => {
      appContainer.app.stage.removeChild(messageBox);
      appContainer.app.stage.addChild(buttonContinue);
+=======
+    setTimeout(async () => {
+     appContainer.app.stage.removeChild(messageBox);
+     appContainer.app.stage.addChild(buttonContinue);
+     buttonContinue.addChild(txtContinue);
+>>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
     },2000)
   }
   txtZordon.text = "[NOMBRE], has sido elegido para enfrentar las fuerzas del mal dirigidas por Lord Zedd y Rita Repulsa. Los Power Rangers están en otra misión y no pueden detener esta amenaza. Recibirás los poderes del Ranger que elijas para poder luchar. Ahora iremos al Centro de Control para que selecciones tus habilidades. El Destino del planeta está en tus manos.".replace('[NOMBRE]', nombre.toUpperCase());
@@ -184,8 +254,22 @@ skiptxt.on('pointerdown', () => {
 
 const dialogo = "[NOMBRE], has sido elegido para enfrentar las fuerzas del mal dirigidas por Lord Zedd y Rita Repulsa. Los Power Rangers están en otra misión y no pueden detener esta amenaza. Recibirás los poderes del Ranger que elijas para poder luchar. Ahora iremos al Centro de Control para que selecciones tus habilidades. El Destino del planeta está en tus manos.";
 const dialogoReplace = dialogo.replace('[NOMBRE]', nombre.toUpperCase());
+<<<<<<< HEAD
   maquinaDeEscribir(messageBox, dialogoReplace, txtZordon,1);
            
+=======
+maquinaDeEscribir(messageBox, dialogoReplace, txtZordon,1).then((response2)=>{
+  if(response2===1){
+ console.log('Termino del comunicado');
+      setTimeout(()=>{
+        appContainer.app.stage.removeChild(messageBox);
+        appContainer.app.stage.addChild(buttonContinue);
+        buttonContinue.addChild(txtContinue);
+      },3000);
+  }
+    
+  }); 
+>>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
      },1200);
     }
 
@@ -202,6 +286,7 @@ const dialogoReplace = dialogo.replace('[NOMBRE]', nombre.toUpperCase());
     console.log(error);
   }
 }
+<<<<<<< HEAD
 
 
 function animationSprite(appContainer, duration, sprite) {
@@ -224,6 +309,12 @@ function animationSprite(appContainer, duration, sprite) {
 
 
 function maquinaDeEscribir(sprite=null,dialogue='',text='',corte=0){
+=======
+6
+
+function maquinaDeEscribir(sprite=null,dialogue='',text=''){
+return new Promise((resolve, reject) => {
+>>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
 
 const arrayText = dialogue.split("");
 
@@ -234,7 +325,10 @@ let i=0;
 if(sprite.typingInterval){
  clearInterval(sprite.typingInterval);
  sprite.typingInterval = null;
+<<<<<<< HEAD
  return 0;
+=======
+>>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
 }
 
 const interval = setInterval(()=>{
@@ -244,10 +338,18 @@ const interval = setInterval(()=>{
     sprite.addChild(text);
  }else{
    clearInterval(interval);
+<<<<<<< HEAD
    return 0;
  }
 }, 100)
   
 sprite.typingInterval = interval
 
+=======
+   resolve(1);
+ }
+}, 100)
+sprite.typingInterval = interval
+})
+>>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
 }

@@ -36,4 +36,23 @@ if(className) newItem.classList.add(className);
 if(idName) newItem.id=idName;
 
 return newItem;
+<<<<<<< HEAD
+=======
+}
+
+
+export function getScale(containerWidth,containerHeight, imgBackground){
+
+    let nosew = containerWidth / imgBackground.texture.width;
+    let noseh = containerHeight / imgBackground.texture.height;
+    let sc=null;
+
+    if(containerWidth <= 600){
+   sc= Math.max(nosew,noseh);
+    }else{
+     sc = Math.min(nosew, noseh); // Escala mínima para que quepa dentro del contenedor
+    }
+
+    return sc;
+>>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
 }
