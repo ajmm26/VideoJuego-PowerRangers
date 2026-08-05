@@ -1,8 +1,8 @@
 //ANIMACION DE TRANSPORTE BASE
-import * as Helpers from '../../globalFunctions'
-import { Sprites } from '../../Class/classSprites';
-import { Animation } from '../../Class/classAnimation'; 
-import { centerComanderScreen } from '../../screens/centerComanderScreen';
+import * as Helpers from '../../globalFunctions.js'
+import { Sprites } from '../../Class/classSprites.js';
+import { Animation } from '../../Class/classAnimation.js'; 
+import { centerComanderScreen } from '../../screens/centerComanderScreen.js';
 
 export async function transporBase() {
 
@@ -21,7 +21,7 @@ export async function transporBase() {
    
     /// imagen de fondo
     const imgBackground= await appContainer.createSprite(
-    '/CursoPHP/Img/sheetComandCenter.png',
+    './Img/sheetComandCenter.png',
     25,
     340,
     400,

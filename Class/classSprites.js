@@ -1,8 +1,4 @@
  import * as Helpers from '../globalFunctions.js';
-<<<<<<< HEAD
-
-=======
->>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
  
  
  export  class Sprites{

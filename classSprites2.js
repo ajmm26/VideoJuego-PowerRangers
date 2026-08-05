@@ -1,4 +1,4 @@
- import * as Helpers from './globalFunctions.js';
+ import * as Helpers from './globalFunctions';
 
  
  

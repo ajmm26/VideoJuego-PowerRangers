@@ -36,8 +36,6 @@ if(className) newItem.classList.add(className);
 if(idName) newItem.id=idName;
 
 return newItem;
-<<<<<<< HEAD
-=======
 }
 
 
@@ -54,5 +52,4 @@ export function getScale(containerWidth,containerHeight, imgBackground){
     }
 
     return sc;
->>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
 }

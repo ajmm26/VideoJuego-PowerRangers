@@ -1,5 +1,5 @@
 
-import { createHtmlItem } from "../globalFunctions"; 
+import { createHtmlItem } from "../globalFunctions.js"; 
 
 export function erroMessageName(name,div){
 

@@ -12,13 +12,29 @@ const styles= new PIXI.TextStyle({
 
     fontFamily:font,
     fill: color,
-<<<<<<< HEAD
-    size: size
-=======
-    fontSize: size
->>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
+    font: size
 
 })
+
+
+
+
+const text = new PIXI.Text(message,styles);
+
+return text
+}
+
+async createText2(message,font, color,size){
+
+const styles= new PIXI.TextStyle({
+
+    fontFamily:font,
+    fill: color,
+    fontSize: size
+
+})
+
+
 
 
 const text = new PIXI.Text(message,styles);

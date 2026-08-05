@@ -1,5 +1,5 @@
 import { Sprites } from './Class/classSprites.js';
-import { Controles } from './Class/classControlls.js';
+
 import { playMusic, pauseMusic } from './js/musicTheme.js';
 import * as Helpers from './globalFunctions.js';
 import { menuScreen } from './screens/menuScreen.js';
@@ -19,11 +19,10 @@ export async function initGame() {
         const appContainer = new Sprites(app);
         const containerWidth = appContainer.app.screen.width 
         const containerHeight = appContainer.app.screen.height;
-        const controls = new Controles();
 
     
         const backGroundimageStart = await appContainer.createSprite(
-            '/CursoPHP/Img/starPhoto.png',
+            "./Img/starPhoto.png",
             10,
             10,
             240,
@@ -42,7 +41,7 @@ export async function initGame() {
         appContainer.app.stage.addChild(backGroundimageStart);
         // Crear un sprite de botón
         const initButton = await appContainer.createSprite(
-            '/CursoPHP/Img/basicButtons.png',
+            './Img/basicButtons.png',
             300, // rectX
             100, // rectY 
             400, // width   
@@ -56,7 +55,6 @@ export async function initGame() {
              appContainer.centerSprite(initButton, 2, 2);
              Helpers.changeBrightnessDinamic(initButton, 1, 0.5);
              appContainer.makeButton(initButton ,'pointerdown', async ()=>{
-              controls.init()
              playMusic('mainTheme.mp3', 0.3);
             container.removeChild(app.view)
            await menuScreen();

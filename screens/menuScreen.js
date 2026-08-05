@@ -15,7 +15,7 @@ const containerWidth = appContainer.app.screen.width
  const containerHeight = appContainer.app.screen.height;
 
 const iconMenu= await appContainer.createSprite(
-    '/CursoPHP/Img/starPhoto.png',
+    './Img/starPhoto.png',
             10,
             10,
             240,
@@ -25,11 +25,8 @@ const iconMenu= await appContainer.createSprite(
             1, // scale
             'backgroundStart' // name 
 )
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 9dce883 (Creacion del centro de mando y animaciones)
 let nosew = containerWidth/ iconMenu.texture.width;
 let noseh = containerHeight/ iconMenu.texture.height;
 const sc = Math.min(nosew, noseh); // mantener proporción sin recorte
@@ -47,7 +44,7 @@ appContainer.app.stage.addChild(iconMenu);
 
       let scaleButton=RulesScreen.scaleButtonsMenu(containerWidth);
          const buttonPlay = await appContainer.createSprite(
-        '/CursoPHP/Img/buttons-options.png',
+        './Img/buttons-options.png',
         15,
         190,
         250,
@@ -71,7 +68,7 @@ appContainer.app.stage.addChild(iconMenu);
         appContainer.app.stage.addChild(buttonPlay);
 
         const buttonSettings = await appContainer.createSprite(
-          '/CursoPHP/Img/buttons-options.png',
+          './Img/buttons-options.png',
         15,
         20,
         320,
@@ -92,7 +89,7 @@ appContainer.app.stage.addChild(iconMenu);
 appContainer.app.stage.addChild(buttonSettings);
 
          const buttonExit = await appContainer.createSprite(
-        '/CursoPHP/Img/buttons-options.png',
+        './Img/buttons-options.png',
         250,
         350,
         250,
