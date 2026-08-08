@@ -19,29 +19,49 @@
 
 
 #key_detected(event){
-     if(event.toUpperCase() ==='A' || event === 'ArrowLeft') this.#A();
-     if(event.toUpperCase() ==='D' || event === 'ArrowRight') this.#D();
-     if(event.toUpperCase() ==='S' || event === 'ArrowDown') this.#S();
-     if(event.toUpperCase() ==='W' || event === 'ArrowUp') this.#W();
-
+     if(event.toUpperCase() ==='A') this.#A();
+     if(event.toUpperCase() ==='D') this.#D();
+     if(event.toUpperCase() ==='S') this.#S();
+     if(event.toUpperCase() ==='W') this.#W();
+     if(event === 'ArrowLeft') this.#LEFT();
+     if( event === 'ArrowRight') this.#RIGHT();
+     if( event === 'ArrowDown') this.#DOWN();
+     if( event === 'ArrowUp') this.#UP();
 
 
 }
 
-#W(){
+#W(fun){
     console.log('W key pressed');
 }
 
-#A(){
+#A(fun){
     console.log('A key pressed');
 }
 
-#D(){
+#D(fun){
         console.log('D key pressed');
 }
 
-#S(){
+#S(fun){
     console.log('S key pressed');
+}
+
+#UP(fun){
+
+
+}
+
+#DOWN(fun){
+
+}
+
+#RIGHT(fun){
+
+}
+
+#LEFT(fun){
+
 }
 
 }

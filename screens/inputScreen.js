@@ -133,13 +133,13 @@ const unscaledWidth = messageBox.texture.width;  // 819
 const unscaledHeight = messageBox.texture.height;  // 258
 
 // Reduce el factor a 0.05 para fuente más pequeña y más líneas (ajusta si necesitas)
-const fontTextZordonName = (unscaledWidth * 0.07) + 'px';  // ~41px local, se escala proporcionalmente
+const fontTextZordonName = (unscaledWidth * 0.1) + 'px';  // ~41px local, se escala proporcionalmente
 
 const txtZordon = await text.createText('', 'Jersey 10', '#000000', fontTextZordonName);
 
 // Márgenes locales (ajusta 0.11 si el gráfico de message-box.png tiene bordes visuales más gruesos)
 const margenHorizontal = unscaledWidth * 0.11;
-const margenVertical = unscaledHeight * 0.1;  // Reduce a 10% para más espacio vertical
+const margenVertical = unscaledHeight * 0.13;  // Reduce a 10% para más espacio vertical
 appContainer.app.stage.addChild(messageBox);
 
 txtZordon.x = margenHorizontal;
@@ -149,7 +149,7 @@ txtZordon.style.wordWrap = true;
 txtZordon.style.wordWrapWidth = unscaledWidth - (margenHorizontal * 2);  // Espacio efectivo para texto
 txtZordon.style.breakWords = true;  // Rompe palabras largas si es necesario
 txtZordon.style.align = 'left';  // Asegura alineación izquierda (por defecto, pero explícito)
-txtZordon.style.lineHeight = parseFloat(fontTextZordonName) * 0.6;  // Altura de línea proporcional
+txtZordon.style.lineHeight = parseFloat(fontTextZordonName) * 0.5;  // Altura de línea proporcional
 
 messageBox.addChild(txtZordon);
 
@@ -214,11 +214,11 @@ skiptxt.on('pointerdown', () => {
      buttonContinue.addChild(txtContinue);
     },2000)
   }
-  txtZordon.text = "[NOMBRE], has sido elegido para enfrentar las fuerzas del mal dirigidas por Lord Zedd y Rita Repulsa. Los Power Rangers están en otra misión y no pueden detener esta amenaza. Recibirás los poderes del Ranger que elijas para poder luchar. Ahora iremos al Centro de Control para que selecciones tus habilidades. El Destino del planeta está en tus manos.".replace('[NOMBRE]', nombre.toUpperCase());
+  txtZordon.text = "[NOMBRE], has sido elegido para enfrentar las fuerzas del mal dirigidas por Lord Zedd. Los Power Rangers están en otra misión y no pueden detener esta amenaza. Recibirás los poderes un Ranger para poder luchar. Ahora iremos al Centro de Control para que selecciones tus habilidades.".replace('[NOMBRE]', nombre.toUpperCase());
 });
-const dialogo = "[NOMBRE], has sido elegido para enfrentar las fuerzas del mal dirigidas por Lord Zedd y Rita Repulsa. Los Power Rangers están en otra misión y no pueden detener esta amenaza. Recibirás los poderes del Ranger que elijas para poder luchar. Ahora iremos al Centro de Control para que selecciones tus habilidades. El Destino del planeta está en tus manos.";
+const dialogo = "[NOMBRE], has sido elegido para enfrentar las fuerzas del mal dirigidas por Lord Zedd. Los Power Rangers están en otra misión y no pueden detener esta amenaza. Recibirás los poderes un Ranger para poder luchar. Ahora iremos al Centro de Control para que selecciones tus habilidades.";
 const dialogoReplace = dialogo.replace('[NOMBRE]', nombre.toUpperCase());
-maquinaDeEscribir(messageBox, dialogoReplace, txtZordon,1).then((response2)=>{
+maquinaDeEscribir(messageBox, dialogoReplace, txtZordon).then((response2)=>{
   if(response2===1){
  console.log('Termino del comunicado');
       setTimeout(()=>{
@@ -270,7 +270,7 @@ const interval = setInterval(()=>{
    clearInterval(interval);
    resolve(1);
  }
-}, 100)
+}, 70)
 sprite.typingInterval = interval
 })
 }
